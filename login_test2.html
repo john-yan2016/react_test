@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="myForm"></div>
+    <script type="text/babel">
+
+      // ** Your code goes here! **
+	  
+	  class LoginForm extends React.Component{
+		constructor() {
+			super();
+			this.state={
+				login:false,
+				username:'',
+				password:''
+			}
+		};
+	  	 
+	  handleSubmit() {
+		this.setState({
+			login:true
+		})
+		
+	  };
+	  us(e){
+		this.setState({
+			username:e.target.value
+		})
+	  };
+	  ps(e){
+		this.setState({
+			password:e.target.value
+		})
+	  };
+	render() {
+  
+		if(!this.state.login){
+	  return (
+		 <form className="loginForm">
+			<input type="text" placeholder="用户名" onChange={this.us.bind(this)}/>
+			<input type="password" placeholder="密码" onChange={this.ps.bind(this)}/>
+			<input type="button" value="登录"  onClick={this.handleSubmit.bind(this)}/>
+		  </form>
+		)	
+	}else{
+		return (<div>用户名：{this.state.username},密码:{this.state.password}</div>);
+	}
+    
+  }
+};
+
+  ReactDOM.render(
+    <LoginForm />,
+    document.getElementById('myForm')
+  );
+
+    </script>
+  </body>
+</html>
